@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Secure Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      :root{--bg:#f4f6fb;--card:#fff;--accent:#2563eb}
+      body{font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);margin:0;display:flex;align-items:center;justify-content:center;height:100vh}
+      .card{background:var(--card);padding:28px;border-radius:10px;box-shadow:0 6px 18px rgba(20,20,40,.08);width:360px}
+      h1{margin:0 0 12px;font-size:20px}
+      .tabs{display:flex;gap:8px;margin-bottom:16px}
+      .tabs button{flex:1;padding:10px;border-radius:6px;border:1px solid #e6e9f2;background:#fff;cursor:pointer}
+      .tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+      form{display:flex;flex-direction:column;gap:10px}
+      input{padding:10px;border:1px solid #e3e6f0;border-radius:6px}
+      .actions{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+      .msg{padding:8px;border-radius:6px;font-size:14px}
+      .hidden{display:none}
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Secure Login</h1>
+      <div class="tabs">
+        <button id="tab-login" class="active">Login</button>
+        <button id="tab-register">Register</button>
+      </div>
+
+      <div id="login-view">
+        <form id="login-form">
+          <input name="username" placeholder="Username" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <div class="actions">
+            <label><input type="checkbox" name="remember" /> Remember</label>
+            <button type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="register-view" class="hidden">
+        <form id="register-form">
+          <input name="username" placeholder="Username" required />
+          <input name="email" type="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <div class="actions">
+            <span></span>
+            <button type="submit">Register</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="message" class="msg hidden"></div>
+    </div>
+
+    <script>
+      const tabLogin = document.getElementById('tab-login');
+      const tabRegister = document.getElementById('tab-register');
+      const loginView = document.getElementById('login-view');
+      const registerView = document.getElementById('register-view');
+      const message = document.getElementById('message');
+
+      function show(view){
+        if(view==='login'){
+          tabLogin.classList.add('active'); tabRegister.classList.remove('active');
+          loginView.classList.remove('hidden'); registerView.classList.add('hidden');
+        } else {
+          tabRegister.classList.add('active'); tabLogin.classList.remove('active');
+          registerView.classList.remove('hidden'); loginView.classList.add('hidden');
+        }
+        message.classList.add('hidden');
+      }
+
+      tabLogin.addEventListener('click', ()=> show('login'));
+      tabRegister.addEventListener('click', ()=> show('register'));
+
+      document.getElementById('login-form').addEventListener('submit', e=>{
+        e.preventDefault();
+        message.textContent = 'Login submitted (client-side)';
+        message.style.background = '#e6ffed';
+        message.classList.remove('hidden');
+      });
+
+      document.getElementById('register-form').addEventListener('submit', e=>{
+        e.preventDefault();
+        message.textContent = 'Registration submitted (client-side)';
+        message.style.background = '#e6ffed';
+        message.classList.remove('hidden');
+      });
+
+      // show login on load
+      show('login');
+    </script>
+    <section>
+      <h2>How to publish</h2>
+      <p>Follow the instructions in the README to publish this `static-demo` folder to the `gh-pages` branch so you get a shareable URL:</p>
+      <pre>
+git add static-demo
+git commit -m "Add static demo"
+# publish using subtree (if supported)
+git subtree push --prefix static-demo origin gh-pages
+      </pre>
+      <p>Or use an orphan branch to deploy the files (shown in README).</p>
+    </section>
+    <footer>
+      <p>Expected Pages URL after publishing: <strong>https://AyushmanX1904.github.io/secure-login-2/</strong></p>
+    </footer>
+  </body>
+</html>
