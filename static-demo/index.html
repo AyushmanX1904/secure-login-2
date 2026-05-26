@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Secure Login — Demo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Secure Login — Static Demo</h1>
+      <p>This is a static demo page for the secure-login app. The real app is server-backed (Flask).</p>
+    </header>
+    <section>
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="/register">Register (backend)</a></li>
+        <li><a href="/login">Login (backend)</a></li>
+        <li><a href="/profile">Profile (protected)</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>How to publish</h2>
+      <p>Follow the instructions in the README to publish this `static-demo` folder to the `gh-pages` branch so you get a shareable URL:</p>
+      <pre>
+git add static-demo
+git commit -m "Add static demo"
+# publish using subtree (if supported)
+git subtree push --prefix static-demo origin gh-pages
+      </pre>
+      <p>Or use an orphan branch to deploy the files (shown in README).</p>
+    </section>
+    <footer>
+      <p>Expected Pages URL after publishing: <strong>https://AyushmanX1904.github.io/secure-login-2/</strong></p>
+    </footer>
+  </body>
+</html>

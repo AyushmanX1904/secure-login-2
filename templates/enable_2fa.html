@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Enable 2FA{% endblock %}
+{% block content %}
+  <h2>Enable Two-Factor Authentication</h2>
+  <p>Secret: {{ secret }}</p>
+  <p>Use this secret in your TOTP app (Google Authenticator, Authy), or scan the provisioning QR from the app's enable page.</p>
+{% endblock %}

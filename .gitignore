@@ -1,0 +1,5 @@
+__pycache__/
+.venv/
+instance/secure_login.db
+*.pyc
+venv/
